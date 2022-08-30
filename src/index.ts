@@ -3,6 +3,7 @@ import config from "./config/config";
 import userRouter from "./routes/userRouter";
 
 const app = express();
+app.use(express.json());
 
 app.use("/api/v1/user", userRouter);
 
