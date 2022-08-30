@@ -1,18 +1,8 @@
-import Router, { Request, Response } from "express";
-import connection from "../utils/db_connection";
+import Router from "express";
+import { userController } from "../controllers/userController";
 
 const userRouter = Router();
 
-userRouter.get("/", (req: Request, res: Response) => {
-  connection()
-    .then((connection) => {
-      const result = connection.query("SELECT * FROM user_tbl");
-      connection.end();
-      return result;
-    })
-    .then((rows) => {
-      res.send(rows);
-    });
-});
+userRouter.get("/", userController.getAllUsers);
 
 export default userRouter;
